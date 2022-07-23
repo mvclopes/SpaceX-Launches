@@ -7,12 +7,13 @@ import com.mvclopes.spacexlaunches.data.repository.SpaceXRepositoryImpl
 import com.mvclopes.spacexlaunches.data.service.ApiModule
 import com.mvclopes.spacexlaunches.domain.repository.SpaceXRepository
 import com.mvclopes.spacexlaunches.domain.usecase.GetAllLaunchesUseCase
+import com.mvclopes.spacexlaunches.presentation.HomeViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
 val spaceXModule = module {
-    // TODO: Alterar pela injeção de dependência do viewModel
-    factory { getSpaceXRepository() }
+    viewModel { HomeViewModel(getAllLaunchesUseCase()) }
 }
 
 private fun Scope.getSpaceXService() = ApiModule.spaceXService
