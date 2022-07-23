@@ -9,5 +9,5 @@ data class LaunchResponse(
     @SerializedName("rocket") val rocket: RocketResponse,
     @SerializedName("launch_success") val launchSuccess: Boolean,
     @SerializedName("links") val links: LinksResponse,
-    @SerializedName("details") val details: String
+    @SerializedName("details") val details: String?
 )

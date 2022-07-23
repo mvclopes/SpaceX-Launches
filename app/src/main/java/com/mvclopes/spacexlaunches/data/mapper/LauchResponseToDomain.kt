@@ -16,7 +16,7 @@ private fun LaunchResponse.toDomain() = Launch(
     rocket = rocket.toDomain(),
     launchSuccess = launchSuccess,
     links = links.toDomain(),
-    details = details
+    details = details.orEmpty()
 )
 
 private fun RocketResponse.toDomain() = Rocket(
@@ -25,7 +25,7 @@ private fun RocketResponse.toDomain() = Rocket(
 )
 
 private fun LinksResponse.toDomain() = Links(
-    missionPatch = missionPatch,
-    article = article,
-    video = video
+    missionPatch = missionPatch.orEmpty(),
+    article = article.orEmpty(),
+    video = video.orEmpty()
 )
