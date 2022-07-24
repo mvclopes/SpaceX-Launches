@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.mvclopes.spacexlaunches.databinding.FragmentHomeBinding
 import com.mvclopes.spacexlaunches.domain.model.Launch
 import com.mvclopes.spacexlaunches.presentation.home.adapter.LaunchAdapter
@@ -18,7 +19,6 @@ class HomeFragment : Fragment() {
     private val binding: FragmentHomeBinding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
     private val adapter: LaunchAdapter by lazy {
         LaunchAdapter(
-            cardListener = { toastMessage("Card Listener") },
             favoriteListener = { toastMessage("Favorite Listener") }
         )
     }

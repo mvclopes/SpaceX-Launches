@@ -2,16 +2,18 @@ package com.mvclopes.spacexlaunches.presentation.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mvclopes.spacexlaunches.R
 import com.mvclopes.spacexlaunches.databinding.ListLaunchItemBinding
 import com.mvclopes.spacexlaunches.domain.model.Launch
+import com.mvclopes.spacexlaunches.presentation.home.HomeFragmentDirections
 import com.mvclopes.spacexlaunches.utils.loadImage
 
 class LaunchAdapter(
-    private val cardListener: () -> Unit,
     private val favoriteListener: () -> Unit
 ): ListAdapter<Launch, LaunchItemHolder>(LaunchDiffCallback) {
 
@@ -20,7 +22,7 @@ class LaunchAdapter(
     }
 
     override fun onBindViewHolder(holder: LaunchItemHolder, position: Int) {
-        holder.bind(getItem(position), cardListener, favoriteListener)
+        holder.bind(getItem(position), favoriteListener)
     }
 }
 
@@ -36,13 +38,15 @@ object LaunchDiffCallback: DiffUtil.ItemCallback<Launch>() {
 
 class LaunchItemHolder private constructor(private val binding: ListLaunchItemBinding):
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(launchItem: Launch, cardListener: () -> Unit, favoriteListener: () -> Unit){
+    fun bind(launchItem: Launch, favoriteListener: () -> Unit){
         val context = binding.root.context
         binding.missionName.text = launchItem.missionName
         binding.launchYear.text =
             context.getString(R.string.launch_year, launchItem.launchYear)
         loadImage(binding.missionPatch, launchItem.links.missionPatch)
-        binding.launchCard.setOnClickListener { cardListener() }
+        binding.launchCard.setOnClickListener {
+            it.findNavController().navigate(HomeFragmentDirections.navigateToDetail(launchItem))
+        }
         binding.iconFavorite.setOnClickListener { favoriteListener() }
     }
 
