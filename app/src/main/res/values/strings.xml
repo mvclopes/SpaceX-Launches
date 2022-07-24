@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SpaceX Launches</string>
+    <string name="mission_name">Mission Name: %s</string>
+    <string name="launch_year">Launch Year: %s</string>
+    <string name="error_message">Error</string>
 </resources>
