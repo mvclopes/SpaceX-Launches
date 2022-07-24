@@ -1,4 +1,4 @@
-package com.mvclopes.spacexlaunches.presentation.state
+package com.mvclopes.spacexlaunches.presentation.home.state
 
 import com.mvclopes.spacexlaunches.domain.model.Launch
 

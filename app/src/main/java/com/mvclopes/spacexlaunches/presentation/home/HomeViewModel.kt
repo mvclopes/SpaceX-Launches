@@ -1,4 +1,4 @@
-package com.mvclopes.spacexlaunches.presentation
+package com.mvclopes.spacexlaunches.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mvclopes.spacexlaunches.domain.model.Launch
 import com.mvclopes.spacexlaunches.domain.usecase.GetAllLaunchesUseCase
-import com.mvclopes.spacexlaunches.presentation.state.HomeUiState
+import com.mvclopes.spacexlaunches.presentation.home.state.HomeUiState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
