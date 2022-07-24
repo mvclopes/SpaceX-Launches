@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="#DDDDDD"
-    android:layout_marginBottom="4dp"
+    android:layout_marginVertical="4dp"
     android:layout_marginHorizontal="8dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="8dp"
