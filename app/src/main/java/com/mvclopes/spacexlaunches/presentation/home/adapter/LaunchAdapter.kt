@@ -3,7 +3,6 @@ package com.mvclopes.spacexlaunches.presentation.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +40,7 @@ class LaunchItemHolder private constructor(private val binding: ListLaunchItemBi
         binding.missionName.text = launchItem.missionName
         binding.launchYear.text =
             context.getString(R.string.launch_year, launchItem.launchYear)
-        loadImage(binding.missionPatch, launchItem.links.missionPatch)
+        loadImage(binding.missionPatch, launchItem.links.missionPatchSmall)
         binding.launchCard.setOnClickListener {
             it.findNavController().navigate(HomeFragmentDirections.navigateToDetail(launchItem))
         }

@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Links(
     val missionPatch: String,
+    val missionPatchSmall: String,
     val article: String,
     val video: String,
 ) : Parcelable

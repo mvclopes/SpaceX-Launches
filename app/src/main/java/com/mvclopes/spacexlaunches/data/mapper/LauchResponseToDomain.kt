@@ -26,6 +26,7 @@ private fun RocketResponse.toDomain() = Rocket(
 
 private fun LinksResponse.toDomain() = Links(
     missionPatch = missionPatch.orEmpty(),
+    missionPatchSmall = missionPatchSmall.orEmpty(),
     article = article.orEmpty(),
     video = video.orEmpty()
 )
