@@ -53,8 +53,9 @@ dependencies {
     // Converters: Gson
     implementation "com.google.code.gson:gson:$gson_version"
 
-    // Glide
+    // Glide and Circular Progress Drawable
     implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     // Koin (DI)
     implementation "io.insert-koin:koin-android:$koin_version"
