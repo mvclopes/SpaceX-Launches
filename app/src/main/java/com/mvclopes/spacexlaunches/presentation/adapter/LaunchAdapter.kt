@@ -2,14 +2,13 @@ package com.mvclopes.spacexlaunches.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.mvclopes.spacexlaunches.R
 import com.mvclopes.spacexlaunches.databinding.ListLaunchItemBinding
 import com.mvclopes.spacexlaunches.domain.model.Launch
+import com.mvclopes.spacexlaunches.utils.loadImage
 
 class LaunchAdapter: ListAdapter<Launch, LaunchItemHolder>(LaunchDiffCallback) {
 
@@ -39,14 +38,7 @@ class LaunchItemHolder private constructor(private val binding: ListLaunchItemBi
         binding.missionName.text = launchItem.missionName
         binding.launchYear.text =
             context.getString(R.string.launch_year, launchItem.launchYear)
-
-        Glide
-            .with(binding.missionPatch)
-            .load(launchItem.links.missionPatch)
-            .placeholder(R.drawable.ic_image_placeholder)
-            .error(R.drawable.ic_broken_image)
-            .into(binding.missionPatch)
-
+        loadImage(binding.missionPatch, launchItem.links.missionPatch)
     }
 
     companion object{
