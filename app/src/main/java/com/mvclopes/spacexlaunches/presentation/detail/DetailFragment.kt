@@ -21,5 +21,4 @@ class DetailFragment : Fragment() {
     ): View {
         return binding.root
     }
-
 }

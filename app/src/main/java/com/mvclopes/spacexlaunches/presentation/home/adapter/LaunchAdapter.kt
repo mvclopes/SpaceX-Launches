@@ -13,16 +13,14 @@ import com.mvclopes.spacexlaunches.domain.model.Launch
 import com.mvclopes.spacexlaunches.presentation.home.HomeFragmentDirections
 import com.mvclopes.spacexlaunches.utils.loadImage
 
-class LaunchAdapter(
-    private val favoriteListener: () -> Unit
-): ListAdapter<Launch, LaunchItemHolder>(LaunchDiffCallback) {
+class LaunchAdapter: ListAdapter<Launch, LaunchItemHolder>(LaunchDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchItemHolder {
         return LaunchItemHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: LaunchItemHolder, position: Int) {
-        holder.bind(getItem(position), favoriteListener)
+        holder.bind(getItem(position))
     }
 }
 
@@ -38,7 +36,7 @@ object LaunchDiffCallback: DiffUtil.ItemCallback<Launch>() {
 
 class LaunchItemHolder private constructor(private val binding: ListLaunchItemBinding):
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(launchItem: Launch, favoriteListener: () -> Unit){
+    fun bind(launchItem: Launch){
         val context = binding.root.context
         binding.missionName.text = launchItem.missionName
         binding.launchYear.text =
@@ -47,7 +45,6 @@ class LaunchItemHolder private constructor(private val binding: ListLaunchItemBi
         binding.launchCard.setOnClickListener {
             it.findNavController().navigate(HomeFragmentDirections.navigateToDetail(launchItem))
         }
-        binding.iconFavorite.setOnClickListener { favoriteListener() }
     }
 
     companion object{
