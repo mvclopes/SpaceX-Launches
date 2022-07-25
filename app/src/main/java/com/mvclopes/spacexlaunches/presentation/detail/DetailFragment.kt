@@ -57,18 +57,5 @@ class DetailFragment : Fragment() {
                         .getDrawable(requireContext(), R.drawable.ic_favorite_border)
                 )
         }
-//        when (state) {
-//            DetailUiState.Success -> {
-//                binding.favoriteIcon.setImageDrawable(
-//                    AppCompatResources
-//                        .getDrawable(requireContext(), R.drawable.ic_favorite_full)
-//                )
-//            }
-//            else ->
-//                binding.favoriteIcon.setImageDrawable(
-//                    AppCompatResources
-//                        .getDrawable(requireContext(), R.drawable.ic_favorite_border)
-//                )
-//        }
     }
 }
