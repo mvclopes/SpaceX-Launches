@@ -16,6 +16,6 @@ interface SpaceXDao {
     suspend fun insertAll(launches: List<LaunchEntity>)
 
     @Insert(onConflict = REPLACE)
-    suspend fun insertPostalCode(launch: LaunchEntity)
+    suspend fun insertLaunch(launch: LaunchEntity)
 
 }
