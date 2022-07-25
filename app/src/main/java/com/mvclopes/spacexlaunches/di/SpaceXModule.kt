@@ -2,6 +2,10 @@ package com.mvclopes.spacexlaunches.di
 
 import com.mvclopes.spacexlaunches.data.datasource.SpaceXDataSource
 import com.mvclopes.spacexlaunches.data.datasource.SpaceXDataSourceImpl
+import com.mvclopes.spacexlaunches.data.datasource.local.LocalDataSource
+import com.mvclopes.spacexlaunches.data.datasource.local.LocalDataSourceImpl
+import com.mvclopes.spacexlaunches.data.datasource.local.db.getDataBase
+import com.mvclopes.spacexlaunches.data.datasource.remote.RemoteDataSource
 import com.mvclopes.spacexlaunches.data.datasource.remote.RemoteDataSourceImpl
 import com.mvclopes.spacexlaunches.data.repository.SpaceXRepositoryImpl
 import com.mvclopes.spacexlaunches.data.service.ApiModule
@@ -18,10 +22,15 @@ val spaceXModule = module {
 
 private fun Scope.getSpaceXService() = ApiModule.spaceXService
 
-private fun Scope.getRemoteDataSource() = RemoteDataSourceImpl(service = getSpaceXService())
+private fun Scope.getRemoteDataSource(): RemoteDataSource {
+    return RemoteDataSourceImpl(service = getSpaceXService())
+}
 
 private fun Scope.getSpaceXDataSource(): SpaceXDataSource {
-    return SpaceXDataSourceImpl(remoteDataSource = getRemoteDataSource())
+    return SpaceXDataSourceImpl(
+        remoteDataSource = getRemoteDataSource(),
+        localDataSource = getLocalDataSource()
+    )
 }
 
 private fun Scope.getSpaceXRepository(): SpaceXRepository {
@@ -29,4 +38,12 @@ private fun Scope.getSpaceXRepository(): SpaceXRepository {
 }
 
 private fun Scope.getAllLaunchesUseCase() = GetAllLaunchesUseCase(repository = getSpaceXRepository())
+
+private fun Scope.getSpaceXDatabase() = getDataBase(context = get())
+
+private fun Scope.getSpaceXDao() = getSpaceXDatabase().spaceXDAO()
+
+private fun Scope.getLocalDataSource(): LocalDataSource {
+    return LocalDataSourceImpl(dao = getSpaceXDao())
+}
 
