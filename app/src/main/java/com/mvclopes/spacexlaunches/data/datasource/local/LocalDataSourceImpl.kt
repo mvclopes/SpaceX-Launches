@@ -18,4 +18,8 @@ class LocalDataSourceImpl(private val dao: SpaceXDao): LocalDataSource {
         return flow { emit(dao.insertLaunch(launch)) }
     }
 
+    override fun getSpecificLaunch(flightNumber: Int): Flow<LaunchEntity> {
+        return flow { emit(dao.getSpecificLaunch(flightNumber)) }
+    }
+
 }

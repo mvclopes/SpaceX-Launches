@@ -7,4 +7,5 @@ interface LocalDataSource {
     fun getFavoriteLaunches(): Flow<List<LaunchEntity>>
     fun insertAll(launches: List<LaunchEntity>): Flow<Unit>
     fun insertLaunch(launch: LaunchEntity): Flow<Unit>
+    fun getSpecificLaunch(flightNumber: Int): Flow<LaunchEntity>
 }

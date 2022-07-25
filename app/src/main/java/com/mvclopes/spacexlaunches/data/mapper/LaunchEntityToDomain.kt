@@ -21,7 +21,7 @@ fun Launch.toEntity() = LaunchEntity(
     details = details
 )
 
-private fun LaunchEntity.toDomain() = Launch(
+fun LaunchEntity.toDomain() = Launch(
     flightNumber = flightNumber,
     missionName = missionName,
     launchYear = launchYear,
