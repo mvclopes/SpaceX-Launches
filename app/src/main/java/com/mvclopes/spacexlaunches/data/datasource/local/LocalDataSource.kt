@@ -8,4 +8,5 @@ interface LocalDataSource {
     fun insertAll(launches: List<LaunchEntity>): Flow<Unit>
     fun insertLaunch(launch: LaunchEntity): Flow<Unit>
     fun getSpecificLaunch(flightNumber: Int): Flow<LaunchEntity>
+    fun deleteLaunch(launch: LaunchEntity): Flow<Unit>
 }

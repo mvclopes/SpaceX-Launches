@@ -29,4 +29,8 @@ class SpaceXRepositoryImpl(private val datasource: SpaceXDataSource): SpaceXRepo
     override fun getSpecificLaunch(flightNumber: Int): Flow<Launch> {
         return datasource.getSpecificLaunch(flightNumber).map { it.toDomain() }
     }
+
+    override fun deleteLaunch(launch: Launch): Flow<Unit> {
+        return datasource.deleteLaunch(launch.toEntity())
+    }
 }

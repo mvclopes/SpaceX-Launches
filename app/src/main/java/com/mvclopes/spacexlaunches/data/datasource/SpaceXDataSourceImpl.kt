@@ -30,4 +30,8 @@ class SpaceXDataSourceImpl(
     override fun getSpecificLaunch(flightNumber: Int): Flow<LaunchEntity> {
         return localDataSource.getSpecificLaunch(flightNumber)
     }
+
+    override fun deleteLaunch(launch: LaunchEntity): Flow<Unit> {
+        return localDataSource.deleteLaunch(launch)
+    }
 }
