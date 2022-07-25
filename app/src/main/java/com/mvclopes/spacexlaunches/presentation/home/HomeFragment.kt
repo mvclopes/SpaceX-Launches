@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.mvclopes.spacexlaunches.databinding.FragmentHomeBinding
 import com.mvclopes.spacexlaunches.domain.model.Launch
-import com.mvclopes.spacexlaunches.presentation.home.adapter.LaunchAdapter
+import com.mvclopes.spacexlaunches.presentation.adapter.LaunchAdapter
 import com.mvclopes.spacexlaunches.presentation.home.state.HomeUiState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
