@@ -2,7 +2,7 @@ package com.mvclopes.spacexlaunches.di
 
 import com.mvclopes.spacexlaunches.data.datasource.SpaceXDataSource
 import com.mvclopes.spacexlaunches.data.datasource.SpaceXDataSourceImpl
-import com.mvclopes.spacexlaunches.data.datasource.remote.RemoteDataSource
+import com.mvclopes.spacexlaunches.data.datasource.remote.RemoteDataSourceImpl
 import com.mvclopes.spacexlaunches.data.repository.SpaceXRepositoryImpl
 import com.mvclopes.spacexlaunches.data.service.ApiModule
 import com.mvclopes.spacexlaunches.domain.repository.SpaceXRepository
@@ -18,7 +18,7 @@ val spaceXModule = module {
 
 private fun Scope.getSpaceXService() = ApiModule.spaceXService
 
-private fun Scope.getRemoteDataSource() = RemoteDataSource(service = getSpaceXService())
+private fun Scope.getRemoteDataSource() = RemoteDataSourceImpl(service = getSpaceXService())
 
 private fun Scope.getSpaceXDataSource(): SpaceXDataSource {
     return SpaceXDataSourceImpl(remoteDataSource = getRemoteDataSource())
