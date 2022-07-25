@@ -11,6 +11,7 @@ import com.mvclopes.spacexlaunches.data.repository.SpaceXRepositoryImpl
 import com.mvclopes.spacexlaunches.data.service.ApiModule
 import com.mvclopes.spacexlaunches.domain.repository.SpaceXRepository
 import com.mvclopes.spacexlaunches.domain.usecase.GetAllLaunchesUseCase
+import com.mvclopes.spacexlaunches.domain.usecase.InsertFavoriteLaunchUseCase
 import com.mvclopes.spacexlaunches.presentation.home.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.scope.Scope
@@ -46,4 +47,6 @@ private fun Scope.getSpaceXDao() = getSpaceXDatabase().spaceXDAO()
 private fun Scope.getLocalDataSource(): LocalDataSource {
     return LocalDataSourceImpl(dao = getSpaceXDao())
 }
+
+private fun Scope.getInsertFavoriteLaunchUseCase() = InsertFavoriteLaunchUseCase(repository = getSpaceXRepository())
 
