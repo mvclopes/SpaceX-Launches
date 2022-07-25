@@ -41,7 +41,6 @@
             android:layout_marginTop="8dp"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toTopOf="@+id/launchYear"
-            app:layout_constraintEnd_toStartOf="@+id/iconFavorite"
             app:layout_constraintStart_toEndOf="@+id/missionPatch"
             app:layout_constraintTop_toTopOf="@+id/missionPatch"
             tools:text="MISSION NAME" />
@@ -54,21 +53,9 @@
             android:layout_marginEnd="16dp"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="@+id/missionPatch"
-            app:layout_constraintEnd_toStartOf="@+id/iconFavorite"
             app:layout_constraintStart_toStartOf="@+id/missionName"
             app:layout_constraintTop_toBottomOf="@+id/missionName"
             tools:text="YEAR" />
-
-        <ImageView
-            android:id="@+id/iconFavorite"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_favorite_border"
-            android:layout_marginEnd="14dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

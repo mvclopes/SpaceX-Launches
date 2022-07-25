@@ -1,9 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.detail.DetailFragment">
 
+    <ImageView
+        android:id="@+id/missionPatch"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_image_placeholder" />
 
+    <ImageView
+        android:id="@+id/favoriteIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_favorite_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/missionPatch"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/missionPatch">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mission_name_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/missionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Falcon 9T" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_year_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/launchYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="2019" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rocket_name_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rocketName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="SpaceX" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/launch_success_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/launchSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Yes" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_label"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Description" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
