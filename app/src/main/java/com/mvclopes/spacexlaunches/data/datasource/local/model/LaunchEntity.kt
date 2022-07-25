@@ -7,12 +7,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "tb_space_x_launches")
 data class LaunchEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey
     @ColumnInfo(name = "flight_number") val flightNumber: Int,
-    @ColumnInfo(name = "mission_name")val missionName: String,
-    @ColumnInfo(name = "launch_year")val launchYear: String,
+    @ColumnInfo(name = "mission_name") val missionName: String,
+    @ColumnInfo(name = "launch_year") val launchYear: String,
     @Embedded val rocket: RocketEntity,
-    @ColumnInfo(name = "launch_success")val launchSuccess: Boolean,
+    @ColumnInfo(name = "launch_success") val launchSuccess: Boolean,
     @Embedded val links: LinksEntity,
     val details: String
 )
