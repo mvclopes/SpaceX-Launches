@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.mvclopes.spacexlaunches.presentation.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/navigateToDetail"
             app:destination="@id/detailFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.mvclopes.spacexlaunches.presentation.detail.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        android:label="Detail's launch"
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="launch"
             app:argType="com.mvclopes.spacexlaunches.domain.model.Launch" />

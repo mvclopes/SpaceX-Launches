@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.mvclopes.spacexlaunches.R
@@ -18,6 +20,9 @@ class HomeFragment : Fragment() {
     private val binding: FragmentHomeBinding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
     private val adapter: LaunchAdapter by lazy { LaunchAdapter() }
     private val viewModel: HomeViewModel by viewModel()
+    private val actionBar: ActionBar? by lazy {
+        (requireActivity() as AppCompatActivity?)?.supportActionBar
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,12 +42,28 @@ class HomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.favoriteItem -> viewModel.getFavoriteLaunches()
-            R.id.lastYearLaunchesItem -> viewModel.getLastYearLaunches()
-            R.id.launchSuccessItem -> viewModel.getOnlyLaunchSuccess()
-            R.id.allLaunchesItem -> viewModel.getAllLaunches()
+            R.id.favoriteItem -> {
+                setActionBarTitle("Favorite launches")
+                viewModel.getFavoriteLaunches()
+            }
+            R.id.lastYearLaunchesItem -> {
+                setActionBarTitle("Last year launches")
+                viewModel.getLastYearLaunches()
+            }
+            R.id.launchSuccessItem -> {
+                setActionBarTitle("Only successful launches")
+                viewModel.getOnlyLaunchSuccess()
+            }
+            R.id.allLaunchesItem -> {
+                setActionBarTitle("All launches")
+                viewModel.getAllLaunches()
+            }
         }
         return true
+    }
+
+    private fun setActionBarTitle(title: String) {
+        actionBar?.title = title
     }
 
     private fun showError(error: String?) {
