@@ -12,6 +12,7 @@ import com.mvclopes.spacexlaunches.data.service.ApiModule
 import com.mvclopes.spacexlaunches.domain.repository.SpaceXRepository
 import com.mvclopes.spacexlaunches.domain.usecase.DeleteLaunchUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.GetAllLaunchesUseCase
+import com.mvclopes.spacexlaunches.domain.usecase.GetFavoriteLaunchesUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.GetLastYearLaunchesUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.GetOnlyLaunchSuccessUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.InsertFavoriteLaunchUseCase
@@ -27,7 +28,8 @@ val spaceXModule = module {
         HomeViewModel(
             getAllLaunchesUseCase = getAllLaunchesUseCase(),
             getOnlyLaunchSuccessUseCase = getOnlyLaunchSuccessUseCase(),
-            getLastYearLaunchesUseCase = getLastYearLaunchesUseCase()
+            getLastYearLaunchesUseCase = getLastYearLaunchesUseCase(),
+            getFavoriteLaunchesUseCase = getFavoriteLaunchesUseCase()
         )
     }
     viewModel {
@@ -75,4 +77,6 @@ private fun Scope.getDeleteLaunchUseCase() = DeleteLaunchUseCase(repository = ge
 private fun Scope.getOnlyLaunchSuccessUseCase() = GetOnlyLaunchSuccessUseCase(repository = getSpaceXRepository())
 
 private fun Scope.getLastYearLaunchesUseCase() = GetLastYearLaunchesUseCase(repository = getSpaceXRepository())
+
+private fun Scope.getFavoriteLaunchesUseCase() = GetFavoriteLaunchesUseCase(repository = getSpaceXRepository())
 

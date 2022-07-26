@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mvclopes.spacexlaunches.domain.model.Launch
 import com.mvclopes.spacexlaunches.domain.usecase.GetAllLaunchesUseCase
+import com.mvclopes.spacexlaunches.domain.usecase.GetFavoriteLaunchesUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.GetLastYearLaunchesUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.GetOnlyLaunchSuccessUseCase
 import kotlinx.coroutines.CoroutineDispatcher
@@ -19,6 +20,7 @@ class HomeViewModel(
     private val getAllLaunchesUseCase: GetAllLaunchesUseCase,
     private val getOnlyLaunchSuccessUseCase: GetOnlyLaunchSuccessUseCase,
     private val getLastYearLaunchesUseCase: GetLastYearLaunchesUseCase,
+    private val getFavoriteLaunchesUseCase: GetFavoriteLaunchesUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ): ViewModel() {
 
@@ -52,6 +54,16 @@ class HomeViewModel(
                 .flowOn(dispatcher)
                 .onStart { showLoading() }
                 .catch { throwable -> handleOnError(throwable) }
+                .collect { launches -> handleOnSuccess(launches)}
+        }
+    }
+
+    fun getFavoriteLaunches() {
+        viewModelScope.launch {
+            getFavoriteLaunchesUseCase()
+                .flowOn(dispatcher)
+                .onStart { showLoading() }
+                .catch { _state.value = HomeUiState.Error("You do not have favorite launch save") }
                 .collect { launches -> handleOnSuccess(launches)}
         }
     }
