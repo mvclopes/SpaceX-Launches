@@ -12,6 +12,7 @@ import com.mvclopes.spacexlaunches.data.service.ApiModule
 import com.mvclopes.spacexlaunches.domain.repository.SpaceXRepository
 import com.mvclopes.spacexlaunches.domain.usecase.DeleteLaunchUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.GetAllLaunchesUseCase
+import com.mvclopes.spacexlaunches.domain.usecase.GetOnlyLaunchSuccessUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.InsertFavoriteLaunchUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.IsFavoriteLaunchUseCase
 import com.mvclopes.spacexlaunches.presentation.detail.DetailViewModel
@@ -21,7 +22,12 @@ import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
 val spaceXModule = module {
-    viewModel { HomeViewModel(getAllLaunchesUseCase()) }
+    viewModel {
+        HomeViewModel(
+            getAllLaunchesUseCase = getAllLaunchesUseCase(),
+            getOnlyLaunchSuccessUseCase = getOnlyLaunchSuccessUseCase()
+        )
+    }
     viewModel {
         DetailViewModel(
             insertFavoriteLaunchUseCase = getInsertFavoriteLaunchUseCase(),
@@ -63,4 +69,6 @@ private fun Scope.getInsertFavoriteLaunchUseCase() = InsertFavoriteLaunchUseCase
 private fun Scope.getIsFavoriteLaunchUseCase() = IsFavoriteLaunchUseCase(repository = getSpaceXRepository())
 
 private fun Scope.getDeleteLaunchUseCase() = DeleteLaunchUseCase(repository = getSpaceXRepository())
+
+private fun Scope.getOnlyLaunchSuccessUseCase() = GetOnlyLaunchSuccessUseCase(repository = getSpaceXRepository())
 
