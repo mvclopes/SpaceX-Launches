@@ -19,10 +19,6 @@ class SpaceXDataSourceImpl(
         return localDataSource.getFavoriteLaunches()
     }
 
-    override fun insertAll(launches: List<LaunchEntity>): Flow<Unit> {
-        return localDataSource.insertAll(launches)
-    }
-
     override fun insertLaunch(launch: LaunchEntity): Flow<Unit> {
         return localDataSource.insertLaunch(launch)
     }
@@ -33,5 +29,13 @@ class SpaceXDataSourceImpl(
 
     override fun deleteLaunch(launch: LaunchEntity): Flow<Unit> {
         return localDataSource.deleteLaunch(launch)
+    }
+
+    override fun getLastYearLaunches(): Flow<List<LaunchResponse>> {
+        return remoteDataSource.getLastYearLaunches()
+    }
+
+    override fun getOnlyLaunchSuccess(): Flow<List<LaunchResponse>> {
+        return remoteDataSource.getOnlyLaunchSuccess()
     }
 }

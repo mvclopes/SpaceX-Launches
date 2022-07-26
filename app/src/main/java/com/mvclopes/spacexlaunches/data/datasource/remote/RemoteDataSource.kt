@@ -5,4 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface RemoteDataSource {
     fun getAllLaunches(): Flow<List<LaunchResponse>>
+    fun getLastYearLaunches(): Flow<List<LaunchResponse>>
+    fun getOnlyLaunchSuccess(): Flow<List<LaunchResponse>>
 }

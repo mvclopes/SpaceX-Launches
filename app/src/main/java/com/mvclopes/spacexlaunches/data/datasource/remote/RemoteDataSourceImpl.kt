@@ -8,4 +8,9 @@ import kotlinx.coroutines.flow.flow
 class RemoteDataSourceImpl(private val service: SpaceXService): RemoteDataSource {
 
     override fun getAllLaunches(): Flow<List<LaunchResponse>> = flow { emit(service.getAllLaunches()) }
+
+    override fun getLastYearLaunches(): Flow<List<LaunchResponse>> = flow { emit(service.getLastYearLaunches()) }
+
+    override fun getOnlyLaunchSuccess(): Flow<List<LaunchResponse>> = flow { emit(service.getOnlyLaunchSuccess()) }
+
 }

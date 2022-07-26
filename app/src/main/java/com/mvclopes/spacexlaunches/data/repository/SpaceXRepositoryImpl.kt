@@ -18,10 +18,6 @@ class SpaceXRepositoryImpl(private val datasource: SpaceXDataSource): SpaceXRepo
         return datasource.getFavoriteLaunches().map { it.toDomain() }
     }
 
-    override fun insertAll(launches: List<Launch>): Flow<Unit> {
-        return datasource.insertAll(launches.toEntity())
-    }
-
     override fun insertLaunch(launch: Launch): Flow<Unit> {
         return datasource.insertLaunch(launch.toEntity())
     }
@@ -32,5 +28,13 @@ class SpaceXRepositoryImpl(private val datasource: SpaceXDataSource): SpaceXRepo
 
     override fun deleteLaunch(launch: Launch): Flow<Unit> {
         return datasource.deleteLaunch(launch.toEntity())
+    }
+
+    override fun getLastYearLaunches(): Flow<List<Launch>> {
+        return datasource.getLastYearLaunches().map { it.toDomain() }
+    }
+
+    override fun getOnlyLaunchSuccess(): Flow<List<Launch>> {
+        return datasource.getOnlyLaunchSuccess().map { it.toDomain() }
     }
 }

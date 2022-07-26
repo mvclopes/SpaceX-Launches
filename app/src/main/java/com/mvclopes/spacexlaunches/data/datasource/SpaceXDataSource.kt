@@ -7,8 +7,9 @@ import kotlinx.coroutines.flow.Flow
 interface SpaceXDataSource {
     fun getAllLaunches(): Flow<List<LaunchResponse>>
     fun getFavoriteLaunches(): Flow<List<LaunchEntity>>
-    fun insertAll(launches: List<LaunchEntity>): Flow<Unit>
     fun insertLaunch(launch: LaunchEntity): Flow<Unit>
     fun getSpecificLaunch(flightNumber: Int): Flow<LaunchEntity>
     fun deleteLaunch(launch: LaunchEntity): Flow<Unit>
+    fun getLastYearLaunches(): Flow<List<LaunchResponse>>
+    fun getOnlyLaunchSuccess(): Flow<List<LaunchResponse>>
 }
