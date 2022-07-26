@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mvclopes.spacexlaunches.domain.model.Launch
 import com.mvclopes.spacexlaunches.domain.usecase.GetAllLaunchesUseCase
+import com.mvclopes.spacexlaunches.domain.usecase.GetLastYearLaunchesUseCase
 import com.mvclopes.spacexlaunches.domain.usecase.GetOnlyLaunchSuccessUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val getAllLaunchesUseCase: GetAllLaunchesUseCase,
     private val getOnlyLaunchSuccessUseCase: GetOnlyLaunchSuccessUseCase,
+    private val getLastYearLaunchesUseCase: GetLastYearLaunchesUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ): ViewModel() {
 
@@ -37,6 +39,16 @@ class HomeViewModel(
     fun getOnlyLaunchSuccess() {
         viewModelScope.launch {
             getOnlyLaunchSuccessUseCase()
+                .flowOn(dispatcher)
+                .onStart { showLoading() }
+                .catch { throwable -> handleOnError(throwable) }
+                .collect { launches -> handleOnSuccess(launches)}
+        }
+    }
+
+    fun getLastYearLaunches() {
+        viewModelScope.launch {
+            getLastYearLaunchesUseCase()
                 .flowOn(dispatcher)
                 .onStart { showLoading() }
                 .catch { throwable -> handleOnError(throwable) }
