@@ -2,6 +2,7 @@ package com.mvclopes.spacexlaunches.presentation.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
@@ -25,7 +26,12 @@ class DetailFragment : Fragment() {
         viewModel.isFavoriteLaunch(args.launch)
         renderContent()
         viewModel.state.observe(viewLifecycleOwner) { state -> setFavoriteIcon(state) }
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.clear()
     }
 
     private fun renderContent() {
