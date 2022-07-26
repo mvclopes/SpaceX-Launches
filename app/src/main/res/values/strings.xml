@@ -2,10 +2,14 @@
     <string name="app_name">SpaceX Launches</string>
     <string name="mission_name">Mission Name: %s</string>
     <string name="launch_year">Launch Year: %s</string>
-    <string name="error_message">Error</string>
+    <string name="error_message">Error: %s</string>
     <string name="mission_name_label">Mission Name</string>
     <string name="launch_year_label">Launch Year</string>
     <string name="rocket_name_label">Rocket Name</string>
     <string name="launch_success_label">Was the launch a success?</string>
     <string name="details_label">Details</string>
+    <string name="favorite_item">Favorite</string>
+    <string name="launches_success_item">Only successful launches</string>
+    <string name="last_year_launches_item">Last year\'s launches</string>
+    <string name="all_launches_item">All launches</string>
 </resources>

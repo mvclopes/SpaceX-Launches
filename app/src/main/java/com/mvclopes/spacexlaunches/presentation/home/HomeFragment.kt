@@ -2,10 +2,12 @@ package com.mvclopes.spacexlaunches.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.mvclopes.spacexlaunches.R
 import com.mvclopes.spacexlaunches.databinding.FragmentHomeBinding
 import com.mvclopes.spacexlaunches.domain.model.Launch
 import com.mvclopes.spacexlaunches.presentation.adapter.LaunchAdapter
@@ -26,14 +28,26 @@ class HomeFragment : Fragment() {
             when (state) {
                 HomeUiState.Loading -> showLoading()
                 is HomeUiState.Success -> showContent(state.launches)
-                is HomeUiState.Error -> showError()
+                is HomeUiState.Error -> showError(state.error)
             }
         }
+        setHasOptionsMenu(true)
         return binding.root
     }
 
-    private fun showError() {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.favoriteItem -> viewModel.getFavoriteLaunches()
+            R.id.lastYearLaunchesItem -> viewModel.getLastYearLaunches()
+            R.id.launchSuccessItem -> viewModel.getOnlyLaunchSuccess()
+            R.id.allLaunchesItem -> viewModel.getAllLaunches()
+        }
+        return true
+    }
+
+    private fun showError(error: String?) {
         with(binding) {
+            error?.let { errorLabel.text = getString(R.string.error_message, it) }
             errorContent.isVisible = true
             contentGroup.isVisible = false
             progressBar.isVisible = false
@@ -44,14 +58,16 @@ class HomeFragment : Fragment() {
         with(binding) {
             contentGroup.isVisible = false
             progressBar.isVisible = true
+            errorContent.isVisible = false
         }
     }
 
     private fun showContent(launches: List<Launch>) {
-        binding.contentGroup.isVisible = true
-        binding.progressBar.isVisible = false
         binding.launchesList.adapter = adapter
         adapter.submitList(launches)
+        binding.contentGroup.isVisible = true
+        binding.progressBar.isVisible = false
+        binding.errorContent.isVisible = false
     }
 
 }
