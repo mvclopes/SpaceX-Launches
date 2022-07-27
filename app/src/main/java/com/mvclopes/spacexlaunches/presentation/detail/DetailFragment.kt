@@ -1,5 +1,7 @@
 package com.mvclopes.spacexlaunches.presentation.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -40,6 +42,7 @@ class DetailFragment : Fragment() {
 
     private fun renderContent() {
         loadImageWithProgress(binding.missionPatch, launch.links.missionPatch)
+        configureButtonOpenVideo()
         with(binding) {
             missionName.text = getFormattedString(R.string.mission_name_label, launch.missionName)
             launchYear.text = getFormattedString(R.string.launch_year_label, launch.launchYear)
@@ -47,7 +50,6 @@ class DetailFragment : Fragment() {
             rocketName.text = getFormattedString(R.string.rocket_name_label, launch.rocket.rocketName)
             details.text = setDetailsMessage()
             favoriteIcon.setOnClickListener { viewModel.onFavoriteIconClicked(launch) }
-            configureButtonOpenVideo()
         }
     }
 
@@ -71,6 +73,8 @@ class DetailFragment : Fragment() {
     private fun configureButtonOpenVideo() {
         binding.buttonOpenVideo.isVisible = launch.links.video.isNotBlank()
         binding.buttonOpenVideo.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(launch.links.video))
+            startActivity(intent)
         }
     }
 }
