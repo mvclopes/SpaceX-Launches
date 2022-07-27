@@ -10,7 +10,7 @@ import com.mvclopes.spacexlaunches.domain.model.Launch
 import com.mvclopes.spacexlaunches.domain.model.Links
 import com.mvclopes.spacexlaunches.domain.model.Rocket
 
-fun getLaunchesResponseStub() = listOf(
+fun getResponseLaunchListStub() = listOf(
     LaunchResponse(
         flightNumber = 1,
         missionName = "Falcon Sat",
@@ -47,7 +47,7 @@ fun getLaunchesResponseStub() = listOf(
     )
 )
 
-fun getLaunchesEntityStub() = listOf(
+fun getEntityLaunchListStub() = listOf(
     LaunchEntity(
         flightNumber = 1,
         missionName = "Falcon Sat",
@@ -84,7 +84,7 @@ fun getLaunchesEntityStub() = listOf(
     )
 )
 
-fun getLaunchesDomainStub() = listOf(
+fun getDomainLaunchListStub() = listOf(
     Launch(
         flightNumber = 1,
         missionName = "Falcon Sat",
@@ -121,8 +121,8 @@ fun getLaunchesDomainStub() = listOf(
     )
 )
 
-fun getLaunchDomainStub(): Launch = getLaunchesDomainStub().first()
+fun getDomainLaunchStub(): Launch = getDomainLaunchListStub().first()
 
-fun getLaunchEntityStub(): LaunchEntity = getLaunchesEntityStub().first()
+fun getEntityLaunchStub(): LaunchEntity = getEntityLaunchListStub().first()
 
-fun getFlightNumberStub(): Int = getLaunchEntityStub().flightNumber
+fun getFlightNumberStub(): Int = getEntityLaunchStub().flightNumber

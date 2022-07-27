@@ -3,9 +3,9 @@ package com.mvclopes.spacexlaunches.data.datasource
 import com.mvclopes.spacexlaunches.data.datasource.local.LocalDataSource
 import com.mvclopes.spacexlaunches.data.datasource.remote.RemoteDataSource
 import com.mvclopes.spacexlaunches.stubs.getFlightNumberStub
-import com.mvclopes.spacexlaunches.stubs.getLaunchEntityStub
-import com.mvclopes.spacexlaunches.stubs.getLaunchesEntityStub
-import com.mvclopes.spacexlaunches.stubs.getLaunchesResponseStub
+import com.mvclopes.spacexlaunches.stubs.getEntityLaunchStub
+import com.mvclopes.spacexlaunches.stubs.getEntityLaunchListStub
+import com.mvclopes.spacexlaunches.stubs.getResponseLaunchListStub
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flowOf
@@ -23,7 +23,7 @@ class SpaceXDataSourceImplTest {
     @Test
     fun `when getAllLaunches returns success should emit a launch response list`() = runBlocking {
         // Given
-        val expectedObject = getLaunchesResponseStub()
+        val expectedObject = getResponseLaunchListStub()
         every { remoteDataSourceMock.getAllLaunches() } returns flowOf(expectedObject)
 
         // When
@@ -36,7 +36,7 @@ class SpaceXDataSourceImplTest {
     @Test
     fun `when getFavoriteLaunches returns success should emit a launch entity list`() = runBlocking {
         // Given
-        val expectedObject = getLaunchesEntityStub()
+        val expectedObject = getEntityLaunchListStub()
         every { localDataSourceMock.getFavoriteLaunches() } returns flowOf(expectedObject)
 
         // When
@@ -49,7 +49,7 @@ class SpaceXDataSourceImplTest {
     @Test
     fun `when insertLaunch save a launch should contain it from local data source favorite launch list`() = runBlocking {
         // Given
-        val expectedObject = getLaunchEntityStub()
+        val expectedObject = getEntityLaunchStub()
         every { localDataSourceMock.insertLaunch(expectedObject) } returns flowOf(Unit)
         every { localDataSourceMock.getFavoriteLaunches() } returns flowOf(listOf(expectedObject))
 
@@ -88,8 +88,8 @@ class SpaceXDataSourceImplTest {
     @Test
     fun `when delete a launch should not contain it from local data source favorite launch list`() = runBlocking {
         // Given
-        val launchEntity = getLaunchEntityStub()
-        val expectedList = listOf(getLaunchesEntityStub().last())
+        val launchEntity = getEntityLaunchStub()
+        val expectedList = listOf(getEntityLaunchListStub().last())
         every { localDataSourceMock.insertLaunch(launchEntity) } returns flowOf(Unit)
         every { localDataSourceMock.deleteLaunch(launchEntity) } returns flowOf(Unit)
         every { localDataSourceMock.getFavoriteLaunches() } returns flowOf(expectedList)
@@ -108,7 +108,7 @@ class SpaceXDataSourceImplTest {
     @Test
     fun `when getLastYearLaunches returns success should emit a launch response list`() = runBlocking {
         // Given
-        val expectedObject = getLaunchesResponseStub()
+        val expectedObject = getResponseLaunchListStub()
         every { remoteDataSourceMock.getLastYearLaunches() } returns flowOf(expectedObject)
 
         // When
@@ -121,7 +121,7 @@ class SpaceXDataSourceImplTest {
     @Test
     fun `when getOnlyLaunchSuccess returns success should emit a launch response list`() = runBlocking {
         // Given
-        val expectedObject = getLaunchesResponseStub()
+        val expectedObject = getResponseLaunchListStub()
         every { remoteDataSourceMock.getOnlyLaunchSuccess() } returns flowOf(expectedObject)
 
         // When

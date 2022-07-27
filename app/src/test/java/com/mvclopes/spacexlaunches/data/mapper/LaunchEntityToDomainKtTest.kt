@@ -1,9 +1,9 @@
 package com.mvclopes.spacexlaunches.data.mapper
 
-import com.mvclopes.spacexlaunches.stubs.getLaunchDomainStub
-import com.mvclopes.spacexlaunches.stubs.getLaunchEntityStub
-import com.mvclopes.spacexlaunches.stubs.getLaunchesDomainStub
-import com.mvclopes.spacexlaunches.stubs.getLaunchesEntityStub
+import com.mvclopes.spacexlaunches.stubs.getDomainLaunchStub
+import com.mvclopes.spacexlaunches.stubs.getEntityLaunchStub
+import com.mvclopes.spacexlaunches.stubs.getDomainLaunchListStub
+import com.mvclopes.spacexlaunches.stubs.getEntityLaunchListStub
 import org.junit.Assert.*
 
 import org.junit.Test
@@ -13,8 +13,8 @@ class LaunchEntityToDomainKtTest {
     @Test
     fun `toDomain should return list from entity launch to domain one`() {
         // Given
-        val entityList = getLaunchesEntityStub()
-        val expectedDomainList = getLaunchesDomainStub()
+        val entityList = getEntityLaunchListStub()
+        val expectedDomainList = getDomainLaunchListStub()
 
         // When
         val domainList = entityList.toDomain()
@@ -27,8 +27,8 @@ class LaunchEntityToDomainKtTest {
     @Test
     fun `toDomain should return an object from entity launch to domain one`() {
         // Given
-        val entityLaunch = getLaunchEntityStub()
-        val expectedDomainObject = getLaunchDomainStub()
+        val entityLaunch = getEntityLaunchStub()
+        val expectedDomainObject = getDomainLaunchStub()
 
         // When
         val domainLaunch = entityLaunch.toDomain()
@@ -41,8 +41,8 @@ class LaunchEntityToDomainKtTest {
     @Test
     fun `toEntity should return list from domain launch to entity one`() {
         // Given
-        val domainList = getLaunchesDomainStub()
-        val expectedEntityList = getLaunchesEntityStub()
+        val domainList = getDomainLaunchListStub()
+        val expectedEntityList = getEntityLaunchListStub()
 
         // When
         val entityList = domainList.toEntity()
@@ -55,8 +55,8 @@ class LaunchEntityToDomainKtTest {
     @Test
     fun `toEntity should return an object from domain launch to entity one`() {
         // Given
-        val domainLaunch = getLaunchDomainStub()
-        val expectedEntityObject = getLaunchEntityStub()
+        val domainLaunch = getDomainLaunchStub()
+        val expectedEntityObject = getEntityLaunchStub()
 
         // When
         val entityLaunch = domainLaunch.toEntity()
