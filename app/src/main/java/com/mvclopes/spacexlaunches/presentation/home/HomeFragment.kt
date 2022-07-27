@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import com.mvclopes.spacexlaunches.R
 import com.mvclopes.spacexlaunches.databinding.FragmentHomeBinding
 import com.mvclopes.spacexlaunches.domain.model.Launch
-import com.mvclopes.spacexlaunches.presentation.adapter.LaunchAdapter
+import com.mvclopes.spacexlaunches.presentation.home.adapter.LaunchAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {

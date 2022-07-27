@@ -1,4 +1,4 @@
-package com.mvclopes.spacexlaunches.presentation.adapter
+package com.mvclopes.spacexlaunches.presentation.home.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.mvclopes.spacexlaunches.domain.model.Launch

@@ -1,4 +1,4 @@
-package com.mvclopes.spacexlaunches.presentation.adapter
+package com.mvclopes.spacexlaunches.presentation.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

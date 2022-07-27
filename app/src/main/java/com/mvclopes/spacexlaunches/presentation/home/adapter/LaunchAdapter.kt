@@ -1,4 +1,4 @@
-package com.mvclopes.spacexlaunches.presentation.adapter
+package com.mvclopes.spacexlaunches.presentation.home.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
