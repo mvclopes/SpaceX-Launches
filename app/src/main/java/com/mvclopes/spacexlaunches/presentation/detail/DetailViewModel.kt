@@ -30,7 +30,7 @@ class DetailViewModel(
             isFavoriteLaunchUseCase(launch.flightNumber)
                 .flowOn(dispatcher)
                 .catch { setFavoriteState(false) }
-                .collect { setFavoriteState(true) }
+                .collect { setFavoriteState(it) }
         }
     }
 
