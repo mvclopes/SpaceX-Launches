@@ -63,8 +63,16 @@ class HomeViewModel(
             getFavoriteLaunchesUseCase()
                 .flowOn(dispatcher)
                 .onStart { showLoading() }
-                .catch { _state.value = HomeUiState.Error("You do not have favorite launch save") }
-                .collect { launches -> handleOnSuccess(launches)}
+                .catch { throwable -> handleOnError(throwable) }
+                .collect { launches -> handleFavoriteLaunches(launches) }
+        }
+    }
+
+    private fun handleFavoriteLaunches(launches: List<Launch>) {
+        if (launches.isEmpty()) {
+            _state.value = HomeUiState.Error("You do not have favorite launch save")
+        } else {
+            handleOnSuccess(launches)
         }
     }
 
