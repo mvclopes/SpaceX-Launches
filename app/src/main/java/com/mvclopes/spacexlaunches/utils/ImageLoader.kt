@@ -15,33 +15,33 @@ import com.mvclopes.spacexlaunches.R
 private const val STROKE_WIDTH = 5f
 private const val CENTER_RADIUS = 120f
 
-fun loadImage(view: ImageView, url: String) {
+fun loadImage(target: ImageView, url: String) {
     Glide
-        .with(view)
+        .with(target.context)
         .load(url)
         .placeholder(R.drawable.ic_image_placeholder)
         .error(R.drawable.ic_broken_image)
-        .into(view)
+        .into(target)
 }
 
-fun loadImageWithCircularProgress(view: ImageView, url: String) {
-    val circularProgress = CircularProgressDrawable(view.context)
+fun loadImageWithCircularProgress(target: ImageView, url: String) {
+    val circularProgress = CircularProgressDrawable(target.context)
     circularProgress.strokeWidth = STROKE_WIDTH
     circularProgress.centerRadius = CENTER_RADIUS
     circularProgress.start()
 
     Glide
-        .with(view)
+        .with(target)
         .load(url)
         .placeholder(circularProgress)
         .error(R.drawable.ic_broken_image)
-        .into(view)
+        .into(target)
 }
 
-fun loadImageWithCustomProgress(view: ImageView, customProgress: View, url: String) {
+fun loadImageWithCustomProgress(target: ImageView, customProgress: View, url: String) {
     customProgress.isVisible = true
     Glide
-        .with(view.context)
+        .with(target.context)
         .load(url)
         .listener(object : RequestListener<Drawable> {
             override fun onLoadFailed(
@@ -67,5 +67,5 @@ fun loadImageWithCustomProgress(view: ImageView, customProgress: View, url: Stri
 
         })
         .error(R.drawable.ic_broken_image)
-        .into(view)
+        .into(target)
 }
