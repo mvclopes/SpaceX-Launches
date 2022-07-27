@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
 
     private fun showError(error: String?) {
         with(binding) {
-            error?.let { errorLabel.text = getString(R.string.error_message, it) }
+            error?.let { errorContent.text = getString(R.string.error_message, it) }
             errorContent.isVisible = true
             contentGroup.isVisible = false
             progressBar.isVisible = false
