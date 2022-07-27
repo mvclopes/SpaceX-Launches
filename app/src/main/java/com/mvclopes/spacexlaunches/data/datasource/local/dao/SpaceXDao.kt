@@ -14,9 +14,6 @@ interface SpaceXDao {
     suspend fun getAllLaunches(): List<LaunchEntity>
 
     @Insert(onConflict = ABORT)
-    suspend fun insertAll(launches: List<LaunchEntity>)
-
-    @Insert(onConflict = ABORT)
     suspend fun insertLaunch(launch: LaunchEntity)
 
     @Query("SELECT * FROM tb_space_x_launches WHERE flight_number LIKE :flightNumber")

@@ -10,10 +10,6 @@ class LocalDataSourceImpl(private val dao: SpaceXDao): LocalDataSource {
         return flow { emit(dao.getAllLaunches()) }
     }
 
-    override fun insertAll(launches: List<LaunchEntity>): Flow<Unit> {
-        return flow { emit(dao.insertAll(launches)) }
-    }
-
     override fun insertLaunch(launch: LaunchEntity): Flow<Unit> {
         return flow { emit(dao.insertLaunch(launch)) }
     }
