@@ -30,102 +30,114 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_image_placeholder" />
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="16dp"
         android:background="@drawable/rounded_form"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/missionPatch">
+        app:layout_constraintTop_toBottomOf="@id/missionPatch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:id="@+id/favoriteIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_favorite_border" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/favoriteIcon"
-            android:layout_alignEnd="@id/favoriteIcon"
-            android:layout_marginTop="8dp"
-            android:text="@string/favorite_label"
-            android:textStyle="bold" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="16dp"
-            android:layout_toStartOf="@+id/favoriteIcon"
-            android:orientation="vertical">
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/missionPatch">
 
-            <TextView
-                android:id="@+id/missionName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textSize="16sp"
-                tools:text="Mission Name: Falcon 9T" />
-
-            <TextView
-                android:id="@+id/launchYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textSize="16sp"
-                tools:text="Launch Year: 2020"/>
-
-            <TextView
-                android:id="@+id/rocketName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textSize="16sp"
-                tools:text="Rocket Name: Space X"/>
-
-            <TextView
-                android:id="@+id/launchSuccess"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textSize="16sp"
-                tools:text="Was the launch a success? Yes"/>
+            <ImageView
+                android:id="@+id/favoriteIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_favorite_border" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/details_label"
-                android:textSize="16sp"
+                android:layout_below="@id/favoriteIcon"
+                android:layout_alignEnd="@id/favoriteIcon"
+                android:layout_marginTop="8dp"
+                android:text="@string/favorite_label"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/details"
+            <LinearLayout
+                android:id="@+id/launchInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toStartOf="@+id/favoriteIcon"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/missionName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="16sp"
+                    tools:text="Mission Name: Falcon 9T" />
+
+                <TextView
+                    android:id="@+id/launchYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="16sp"
+                    tools:text="Launch Year: 2020" />
+
+                <TextView
+                    android:id="@+id/rocketName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="16sp"
+                    tools:text="Rocket Name: Space X" />
+
+                <TextView
+                    android:id="@+id/launchSuccess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="16sp"
+                    tools:text="Was the launch a success? Yes" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/details_label"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    tools:text="Description" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonOpenVideo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                tools:text="Description" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/launchInfo"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                android:text="@string/button_open_launch_video_label" />
 
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/buttonOpenVideo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:visibility="gone"
-            android:text="@string/button_open_launch_video_label" />
-
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
