@@ -7,7 +7,7 @@ interface SpaceXRepository {
     fun getAllLaunches(): Flow<List<Launch>>
     fun getFavoriteLaunches(): Flow<List<Launch>>
     fun insertLaunch(launch: Launch): Flow<Unit>
-    fun getSpecificLaunch(flightNumber: Int): Flow<Launch>
+    fun isFavoriteLaunch(flightNumber: Int): Flow<Boolean>
     fun deleteLaunch(launch: Launch): Flow<Unit>
     fun getLastYearLaunches(): Flow<List<Launch>>
     fun getOnlyLaunchSuccess(): Flow<List<Launch>>
