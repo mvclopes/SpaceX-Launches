@@ -15,7 +15,7 @@ import com.mvclopes.spacexlaunches.R
 import com.mvclopes.spacexlaunches.databinding.FragmentDetailBinding
 import com.mvclopes.spacexlaunches.domain.model.Launch
 import com.mvclopes.spacexlaunches.utils.getFormattedString
-import com.mvclopes.spacexlaunches.utils.loadImageWithProgress
+import com.mvclopes.spacexlaunches.utils.loadImageWithCustomProgress
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment() {
@@ -41,7 +41,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun renderContent() {
-        loadImageWithProgress(binding.missionPatch, launch.links.missionPatch)
+        loadImageWithCustomProgress(binding.missionPatch, binding.progressBar, launch.links.missionPatch)
         configureButtonOpenVideo()
         with(binding) {
             missionName.text = getFormattedString(R.string.mission_name_label, launch.missionName)
