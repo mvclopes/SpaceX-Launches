@@ -10,9 +10,10 @@ import com.mvclopes.spacexlaunches.utils.MainCoroutineRule
 import com.mvclopes.spacexlaunches.utils.getOrAwaitValue
 import io.mockk.coEvery
 import io.mockk.mockk
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -31,7 +32,7 @@ class HomeViewModelTest {
     private val getOnlyLaunchSuccessUseCase = mockk<GetOnlyLaunchSuccessUseCase>(relaxed = true)
     private val getLastYearLaunchesUseCase = mockk<GetLastYearLaunchesUseCase>(relaxed = true)
     private val getFavoriteLaunchesUseCase = mockk<GetFavoriteLaunchesUseCase>(relaxed = true)
-    private val dispatcher = TestCoroutineDispatcher()
+    private val dispatcher = Dispatchers.Unconfined
 
     private val target = HomeViewModel(
         getAllLaunchesUseCase = getAllLaunchesUseCase,
@@ -58,6 +59,22 @@ class HomeViewModelTest {
     }
 
     @Test
+    fun `when getAllLaunches returns error should trigger error state`() {
+        mainCoroutineRule.runBlockingTest {
+            // Given
+            val expectedError = Exception("Error")
+            coEvery { getAllLaunchesUseCase() } returns flow { throw expectedError }
+
+            // When
+            target.getAllLaunches()
+            val state = target.state.getOrAwaitValue()
+
+            // Then
+            assertEquals(state, HomeUiState.Error("Error"))
+        }
+    }
+
+    @Test
     fun `when getOnlyLaunchSuccess returns success should trigger success state`() {
         mainCoroutineRule.runBlockingTest {
             // Given
@@ -70,6 +87,22 @@ class HomeViewModelTest {
 
             // Then
             assertEquals(state, HomeUiState.Success(expectedResult))
+        }
+    }
+
+    @Test
+    fun `when getOnlyLaunchSuccess returns error should trigger error state`() {
+        mainCoroutineRule.runBlockingTest {
+            // Given
+            val expectedError = Exception("Error")
+            coEvery { getOnlyLaunchSuccessUseCase() } returns flow { throw expectedError }
+
+            // When
+            target.getOnlyLaunchSuccess()
+            val state = target.state.getOrAwaitValue()
+
+            // Then
+            assertEquals(state, HomeUiState.Error("Error"))
         }
     }
 
@@ -90,6 +123,22 @@ class HomeViewModelTest {
     }
 
     @Test
+    fun `when getLastYearLaunches returns error should trigger error state`() {
+        mainCoroutineRule.runBlockingTest {
+            // Given
+            val expectedError = Exception("Error")
+            coEvery { getLastYearLaunchesUseCase() } returns flow { throw expectedError }
+
+            // When
+            target.getLastYearLaunches()
+            val state = target.state.getOrAwaitValue()
+
+            // Then
+            assertEquals(state, HomeUiState.Error("Error"))
+        }
+    }
+
+    @Test
     fun `when getFavoriteLaunches returns success should trigger success state`() {
         mainCoroutineRule.runBlockingTest {
             // Given
@@ -102,6 +151,22 @@ class HomeViewModelTest {
 
             // Then
             assertEquals(state, HomeUiState.Success(expectedResult))
+        }
+    }
+
+    @Test
+    fun `when getFavoriteLaunches returns error should trigger error state`() {
+        mainCoroutineRule.runBlockingTest {
+            // Given
+            val expectedError = Exception("Error")
+            coEvery { getFavoriteLaunchesUseCase() } returns flow { throw expectedError }
+
+            // When
+            target.getFavoriteLaunches()
+            val state = target.state.getOrAwaitValue()
+
+            // Then
+            assertEquals(state, HomeUiState.Error("Error"))
         }
     }
 }
