@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">SpaceX Launches</string>
+    <string name="mission_name">Mission Name: %s</string>
+    <string name="launch_year">Launch Year: %s</string>
+    <string name="error_message">Error: %s</string>
+    <string name="mission_name_label"><![CDATA[<b>Mission Name:</b> %s]]></string>
+    <string name="launch_year_label"><![CDATA[<b>Launch Year:</b> %s]]></string>
+    <string name="rocket_name_label"><![CDATA[<b>Rocket Name:</b> %s]]></string>
+    <string name="launch_success_label"><![CDATA[<b>Was the launch a success?</b> %s]]></string>
+    <string name="details_label">Details</string>
+    <string name="favorite_item">Favorite</string>
+    <string name="launches_success_item">Only successful launches</string>
+    <string name="last_year_launches_item">Last year\'s launches</string>
+    <string name="all_launches_item">All launches</string>
+    <string name="favorite_label">Favorite</string>
+    <string name="button_open_launch_video_label">Open launch video</string>
 </resources>
