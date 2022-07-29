@@ -14,6 +14,11 @@ Foram utilizadas as seguintes tecnologias:
 * Componentes personalizados como [Lottie Animations](https://lottiefiles.com/) e [Circle Image View](https://github.com/hdodenhof/CircleImageView)
 * Carregamento de imagens com [Glide](https://bumptech.github.io/glide/)
 
+### Demonstração
+<p>
+  <img width="300"src="https://user-images.githubusercontent.com/67007295/181764095-b975de8f-0476-44a8-9903-5757a84c8f70.gif">
+</p>
+
 ### Próximas etapas
 * Modularizar as funcionalidades (Ex.: banco de dados, serviço de API, componentes personalizados, etc).
 * Criação de testes instrumentados aplicando [Robot Pattern](https://academy.realm.io/posts/kau-jake-wharton-testing-robots/).
