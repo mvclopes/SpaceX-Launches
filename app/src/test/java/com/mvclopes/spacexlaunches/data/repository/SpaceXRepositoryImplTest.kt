@@ -51,7 +51,7 @@ class SpaceXRepositoryImplTest {
         val result = target.getAllLaunches()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -77,7 +77,7 @@ class SpaceXRepositoryImplTest {
         val result = target.getFavoriteLaunches()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -108,7 +108,7 @@ class SpaceXRepositoryImplTest {
         val result = target.insertLaunch(domainLaunch)
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -146,7 +146,7 @@ class SpaceXRepositoryImplTest {
         val result = target.isFavoriteLaunch(flightNumber)
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -183,7 +183,7 @@ class SpaceXRepositoryImplTest {
         val result = target.deleteLaunch(domainLaunch)
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -209,7 +209,7 @@ class SpaceXRepositoryImplTest {
         val result = target.getLastYearLaunches()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -235,6 +235,6 @@ class SpaceXRepositoryImplTest {
         val result = target.getOnlyLaunchSuccess()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 }

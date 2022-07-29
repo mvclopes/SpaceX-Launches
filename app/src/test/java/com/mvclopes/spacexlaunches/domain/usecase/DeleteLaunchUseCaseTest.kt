@@ -29,8 +29,8 @@ class DeleteLaunchUseCaseTest {
         val result = useCase(domainLaunch)
 
         result.test {
-            assertEquals(Unit, expectItem())
-            expectComplete()
+            assertEquals(Unit, awaitItem())
+            awaitComplete()
         }
     }
 
@@ -44,6 +44,6 @@ class DeleteLaunchUseCaseTest {
         // When
         val result = useCase(domainLaunch)
 
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 }

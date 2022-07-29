@@ -30,8 +30,8 @@ class InsertFavoriteLaunchUseCaseTest {
 
         // Then
         result.test {
-            assertEquals(Unit, expectItem())
-            expectComplete()
+            assertEquals(Unit, awaitItem())
+            awaitComplete()
         }
     }
 
@@ -46,6 +46,6 @@ class InsertFavoriteLaunchUseCaseTest {
         val result = useCase(domainLaunch)
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 }

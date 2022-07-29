@@ -50,7 +50,7 @@ class SpaceXDataSourceImplTest {
         val result = target.getAllLaunches()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -76,7 +76,7 @@ class SpaceXDataSourceImplTest {
         val result = target.getFavoriteLaunches()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -105,7 +105,7 @@ class SpaceXDataSourceImplTest {
         val result = target.insertLaunch(entityLaunch)
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -143,7 +143,7 @@ class SpaceXDataSourceImplTest {
         val result = target.isFavoriteLaunch(flightNumber)
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -177,7 +177,7 @@ class SpaceXDataSourceImplTest {
         val result = target.deleteLaunch(entityLaunch)
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -203,7 +203,7 @@ class SpaceXDataSourceImplTest {
         val result = target.getLastYearLaunches()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 
     @Test
@@ -229,6 +229,6 @@ class SpaceXDataSourceImplTest {
         val result = target.getOnlyLaunchSuccess()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 }

@@ -30,8 +30,8 @@ class GetOnlyLaunchSuccessUseCaseTest {
 
         // Then
         result.test {
-            assertEquals(domainList, expectItem())
-            expectComplete()
+            assertEquals(domainList, awaitItem())
+            awaitComplete()
         }
     }
 
@@ -45,6 +45,6 @@ class GetOnlyLaunchSuccessUseCaseTest {
         val result = useCase()
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 }

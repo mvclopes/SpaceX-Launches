@@ -32,8 +32,8 @@ class IsFavoriteLaunchUseCaseTest {
 
         // Then
         result.test {
-            assertTrue(expectItem())
-            expectComplete()
+            assertTrue(awaitItem())
+            awaitComplete()
         }
     }
 
@@ -48,8 +48,8 @@ class IsFavoriteLaunchUseCaseTest {
 
         // Then
         result.test {
-            assertFalse(expectItem())
-            expectComplete()
+            assertFalse(awaitItem())
+            awaitComplete()
         }
     }
 
@@ -64,6 +64,6 @@ class IsFavoriteLaunchUseCaseTest {
         val result = useCase(flightNumber)
 
         // Then
-        result.test { assertSame(expectedThrowable, expectError()) }
+        result.test { assertSame(expectedThrowable, awaitError()) }
     }
 }
